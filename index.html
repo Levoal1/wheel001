@@ -1,25 +1,12 @@
 
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<title>Мега Бонуска</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<style>
-.pointer-arrow {
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 30px;
-  z-index: 10;
-}
-.slot-container {
-  position: relative;
-}
-
+  <meta charset="utf-8" />
+  <title>Мега Бонуска 2.0</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
     body {
       margin: 0;
       padding: 0;
@@ -28,6 +15,7 @@
       color: #fff;
       text-align: center;
     }
+
     h1 {
       font-size: 28px;
       margin-top: 20px;
@@ -35,36 +23,52 @@
       text-shadow: 0 0 10px gold;
       animation: pulse 2s infinite;
     }
+
     @keyframes pulse {
       0%, 100% { text-shadow: 0 0 10px gold; }
       50% { text-shadow: 0 0 20px gold; }
     }
-    .slot-container {
+
+    .wrapper {
       position: relative;
       width: 300px;
-      height: 150px;
       margin: 20px auto;
+    }
+
+    .pointer-arrow {
+      position: absolute;
+      left: 100%;
+      margin-left: -10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 15px 0 15px 25px;
+      border-color: transparent transparent transparent lime;
+      transform: rotate(60deg);
+      filter: drop-shadow(0 0 6px lime);
+      z-index: 1000;
+    }
+
+    .arrow1 { top: 15px; }  /* для первого слота */
+    .arrow2 { top: 65px; }  /* для второго слота */
+
+    .slot-container {
+      position: relative;
+      width: 100%;
+      height: 150px;
       border: 4px solid gold;
       border-radius: 10px;
       background: #111;
       overflow: hidden;
       box-shadow: 0 0 20px gold;
     }
-    .arrow {
-      position: absolute;
-      top: 66px;
-      right: -25px;
-      width: 20px;
-      height: 20px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Green_arrow_left.svg/256px-Green_arrow_left.svg.png') no-repeat center;
-      background-size: contain;
-      z-index: 2;
-    }
+
     .reel {
       position: absolute;
       width: 100%;
       top: 0;
     }
+
     .slot-item {
       height: 50px;
       line-height: 50px;
@@ -72,6 +76,7 @@
       background: #222;
       border-top: 1px solid #444;
     }
+
     button {
       font-size: 18px;
       padding: 12px 28px;
@@ -82,10 +87,12 @@
       cursor: pointer;
       margin-top: 20px;
     }
+
     #claimBtn {
       background: green;
       display: none;
     }
+
     #promo {
       margin-top: 20px;
       color: lime;
@@ -93,21 +100,44 @@
       display: none;
     }
   </style>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script></head>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
 <body>
-<h1>МЕГА БОНУСКА</h1>
-<div id="chances">У вас попыток: <span id="attempts">1</span></div>
-<div class="slot-container">
-<img alt="pointer" class="pointer-arrow" src="arrow.png"/>
-<div class="arrow" style="position: absolute; top: 66px; right: -25px; width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 15px solid lime; z-index: 10;"></div>
-<div class="reel" id="reel">
-<div class="slot-item">+500% К ДЕПОЗИТУ</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">БОНУСКА ЗА 10.000₽</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">25 FP</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">25 FP</div><div class="slot-item">500 FP</div><div class="slot-item">25 FP</div><div class="slot-item">500 FP</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">+220% К ДЕПОЗИТУ</div><div class="slot-item">50 FP</div><div class="slot-item">+500% К ДЕПОЗИТУ</div><div class="slot-item">ВАУЧЕР НА 10.000₽</div><div class="slot-item">БОНУСКА ЗА 10.000₽</div><div class="slot-item">+500% К ДЕПОЗИТУ</div><div class="slot-item">25 FP</div><div class="slot-item">50 FP</div><div class="slot-item">+500% К ДЕПОЗИТУ</div><div class="slot-item">500 FP</div><div class="slot-item">25 FP</div><div class="slot-item">БОНУСКА ЗА 10.000₽</div><div class="slot-item">ВАУЧЕР НА 10.000₽</div><div class="slot-item">500 FP</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">500 FP</div><div class="slot-item">25 FP</div><div class="slot-item">+220% К ДЕПОЗИТУ</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">ВАУЧЕР НА 10.000₽</div><div class="slot-item">+500% К ДЕПОЗИТУ</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">+220% К ДЕПОЗИТУ</div><div class="slot-item">500 FP</div><div class="slot-item">+220% К ДЕПОЗИТУ</div><div class="slot-item">500 FP</div><div class="slot-item">25 FP</div><div class="slot-item">БОНУСКА ЗА 10.000₽</div><div class="slot-item">500 FP</div><div class="slot-item">+220% К ДЕПОЗИТУ</div><div class="slot-item">ВАУЧЕР НА 10.000₽</div><div class="slot-item">50 FP</div><div class="slot-item">ВАУЧЕР НА 10.000₽</div><div class="slot-item">25 FP</div><div class="slot-item">ШАНС Х2</div>
-<div class="slot-item">ВАУЧЕР НА 10.000₽</div></div>
-</div>
-<button id="spinBtn">КРУТИТЬ</button>
-<button id="claimBtn" onclick="window.location.href='https://lkhq.cc/24e8'">ЗАБРАТЬ БОНУС</button>
-<div id="promo">Сделайте депозит на 1WIN от 2 000 ₽ и получите ШАНС Х2!</div>
-<script>
+  <h1>МЕГА БОНУСКА 2.0</h1>
+  <div id="chances">У вас попыток: <span id="attempts">1</span></div>
+
+  <div class="wrapper">
+    <div class="pointer-arrow arrow1"></div>
+    <div class="pointer-arrow arrow2"></div>
+    <div class="slot-container">
+      <div class="reel" id="reel">
+        <!-- Гарантированный приз на 1 слоте -->
+        <div class="slot-item">+220% К ДЕПОЗИТУ</div>
+        <!-- Гарантированный приз на 2 слоте -->
+        <div class="slot-item">ШАНС Х3</div>
+        <!-- Остальные случайные призы -->
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
+        <div class="slot-item">+500% К ДЕПОЗИТУ</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">БОНУСКА ЗА 30.000₽</div>
+        <div class="slot-item">50 FP</div>
+        <div class="slot-item">БОНУСКА ЗА 10.000₽</div>
+        <div class="slot-item">+220% К ДЕПОЗИТУ</div>
+        <div class="slot-item">БОНУСКА ЗА 30.000₽</div>
+        <div class="slot-item">ШАНС Х2</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">+500% К ДЕПОЗИТУ</div>
+      </div>
+    </div>
+  </div>
+
+  <button id="spinBtn">КРУТИТЬ</button>
+  <button id="claimBtn" onclick="window.location.href='https://lkhq.cc/24e8'">ЗАБРАТЬ БОНУС</button>
+  <div id="promo">Сделайте депозит на 1win от 3,500Р и получите Шанс х3 и +220% к любому депозиту!</div>
+
+  <script>
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
 
@@ -120,13 +150,18 @@
     spinBtn.onclick = () => {
       if (parseInt(attemptsEl.innerText) <= 0) return;
       spinBtn.disabled = true;
+
+      // Гарантированная прокрутка к нужному положению
       reel.style.transition = "transform 7s cubic-bezier(0.15, 0.8, 0.3, 1)";
-      reel.style.transform = "translateY(-2250px)";
+      reel.style.transform = "translateY(-50px)"; // точно на 1 и 2 слот
+
       setTimeout(() => {
-        confetti(); promo.style.display = "block";
+        confetti();
+        promo.style.display = "block";
         claimBtn.style.display = "inline-block";
         spinBtn.style.display = "none";
       }, 7000);
+
       attemptsEl.innerText = "0";
     };
   </script>
