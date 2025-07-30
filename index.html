@@ -3,8 +3,8 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Мега Бонуска 2.0</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Мега Бонуска</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     body {
@@ -49,8 +49,8 @@
       z-index: 1000;
     }
 
-    .arrow1 { top: 15px; }  /* для первого слота */
-    .arrow2 { top: 65px; }  /* для второго слота */
+    .arrow1 { top: 15px; }  /* первый слот */
+    .arrow2 { top: 65px; }  /* второй слот */
 
     .slot-container {
       position: relative;
@@ -103,7 +103,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <h1>МЕГА БОНУСКА 2.0</h1>
+  <h1>МЕГА БОНУСКА</h1>
   <div id="chances">У вас попыток: <span id="attempts">1</span></div>
 
   <div class="wrapper">
@@ -111,24 +111,19 @@
     <div class="pointer-arrow arrow2"></div>
     <div class="slot-container">
       <div class="reel" id="reel">
-        <!-- Гарантированный приз на 1 слоте -->
+        <!-- Победные слоты -->
         <div class="slot-item">+220% К ДЕПОЗИТУ</div>
-        <!-- Гарантированный приз на 2 слоте -->
         <div class="slot-item">ШАНС Х3</div>
-        <!-- Остальные случайные призы -->
+        <!-- Остальные -->
         <div class="slot-item">500 FP</div>
         <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
         <div class="slot-item">+500% К ДЕПОЗИТУ</div>
         <div class="slot-item">25 FP</div>
         <div class="slot-item">БОНУСКА ЗА 30.000₽</div>
-        <div class="slot-item">50 FP</div>
-        <div class="slot-item">БОНУСКА ЗА 10.000₽</div>
         <div class="slot-item">+220% К ДЕПОЗИТУ</div>
-        <div class="slot-item">БОНУСКА ЗА 30.000₽</div>
         <div class="slot-item">ШАНС Х2</div>
-        <div class="slot-item">500 FP</div>
         <div class="slot-item">25 FP</div>
-        <div class="slot-item">+500% К ДЕПОЗИТУ</div>
+        <div class="slot-item">БОНУСКА ЗА 10.000₽</div>
       </div>
     </div>
   </div>
@@ -151,9 +146,9 @@
       if (parseInt(attemptsEl.innerText) <= 0) return;
       spinBtn.disabled = true;
 
-      // Гарантированная прокрутка к нужному положению
+      // Остановка ровно на первом и втором слоте
       reel.style.transition = "transform 7s cubic-bezier(0.15, 0.8, 0.3, 1)";
-      reel.style.transform = "translateY(-50px)"; // точно на 1 и 2 слот
+      reel.style.transform = "translateY(-50px)";
 
       setTimeout(() => {
         confetti();
