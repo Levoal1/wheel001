@@ -111,35 +111,32 @@
     <div class="pointer-arrow middle"></div>
     <div class="slot-container">
       <div class="reel" id="reel">
-        <!-- Фейковые -->
-        <div class="slot-item">ВАУЧЕР</div>
-        <div class="slot-item">500 FP</div>
-        <div class="slot-item">БОНУС 10.000₽</div>
+        <!-- Фейковые слоты (для эффекта прокрутки) -->
         <div class="slot-item">+100% К ДЕПОЗИТУ</div>
+        <div class="slot-item">БОНУС 10.000₽</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">25 FP</div>
         <div class="slot-item">+300% К ДЕПОЗИТУ</div>
         <div class="slot-item">ШАНС Х2</div>
-        <div class="slot-item">25 FP</div>
         <div class="slot-item">ВАУЧЕР</div>
-        <div class="slot-item">БОНУСКА ЗА 30.000₽</div>
+        <div class="slot-item">БОНУСКА</div>
         <div class="slot-item">+150% К ДЕПОЗИТУ</div>
+        <div class="slot-item">БОНУС 5.000₽</div>
+        <div class="slot-item">+100% К ДЕПОЗИТУ</div>
+        <div class="slot-item">500 FP</div>
         <div class="slot-item">БОНУС 10.000₽</div>
         <div class="slot-item">+300% К ДЕПОЗИТУ</div>
-        <div class="slot-item">+100% К ДЕПОЗИТУ</div>
-        <div class="slot-item">25 FP</div>
-        <div class="slot-item">ВАУЧЕР</div>
-        <div class="slot-item">500 FP</div>
-        <div class="slot-item">БОНУС 10.000₽</div>
         <div class="slot-item">+150% К ДЕПОЗИТУ</div>
+        <div class="slot-item">25 FP</div>
 
-        <!-- ГАРАНТИРОВАННЫЕ ПОБЕДНЫЕ -->
-        <div class="slot-item">+220% К ДЕПОЗИТУ</div> <!-- попадёт в первый слот -->
-        <div class="slot-item">ШАНС Х3</div>            <!-- попадёт во второй -->
+        <!-- Победные слоты -->
+        <div class="slot-item">+220% К ДЕПОЗИТУ</div> <!-- первый (верхний) слот -->
+        <div class="slot-item">ШАНС Х3</div>           <!-- второй (центральный) слот -->
 
-        <!-- После — ещё фейковые -->
-        <div class="slot-item">БОНУС 5.000₽</div>
-        <div class="slot-item">БОНУСКА</div>
-        <div class="slot-item">+50% К ДЕПОЗИТУ</div>
-        <div class="slot-item">500 FP</div>
+        <!-- После победных еще слоты, чтобы не было пустоты -->
+        <div class="slot-item">БОНУС 15.000₽</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">+200% К ДЕПОЗИТУ</div>
       </div>
     </div>
   </div>
@@ -164,11 +161,11 @@
       spinBtn.disabled = true;
 
       const itemHeight = 50;
-      const finalIndex = reel.children.length - 3; // -3 потому что хотим 2-й с конца был в центре
-      const offset = finalIndex * itemHeight;
+      const finalIndex = reel.children.length - 5; // гарантированно приводит ШАНС Х3 в центр
+      const translateY = finalIndex * itemHeight;
 
       reel.style.transition = "transform 10s cubic-bezier(0.15, 0.8, 0.3, 1)";
-      reel.style.transform = `translateY(-${offset}px)`;
+      reel.style.transform = `translateY(-${translateY}px)`;
 
       setTimeout(() => {
         confetti();
