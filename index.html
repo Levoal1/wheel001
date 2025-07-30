@@ -49,11 +49,11 @@
       z-index: 1000;
     }
 
-    .arrow-top {
+    .pointer-arrow.top {
       top: 15px;
     }
 
-    .arrow-mid {
+    .pointer-arrow.middle {
       top: 65px;
     }
 
@@ -112,82 +112,46 @@
   <div id="chances">У вас попыток: <span id="attempts">1</span></div>
 
   <div class="wrapper">
-    <div class="pointer-arrow arrow-top"></div>
-    <div class="pointer-arrow arrow-mid"></div>
-
+    <div class="pointer-arrow top"></div>
+    <div class="pointer-arrow middle"></div>
     <div class="slot-container">
       <div class="reel" id="reel">
-        <!-- Генерируем 75 слотов -->
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
+        <!-- Победные слоты -->
         <div class="slot-item">+220% К ДЕПОЗИТУ</div>
         <div class="slot-item">ШАНС Х3</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 30000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 15000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5000₽</div>
+
+        <!-- Слоты (разнообразие) -->
+        <div class="slot-item">50 FREE SPINS</div>
+        <div class="slot-item">+300% К ДЕПОЗИТУ</div>
+        <div class="slot-item">БОНУС ЗА 15.000₽</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">МЕГА СПИН</div>
+        <div class="slot-item">+150% НА СЛОТЫ</div>
+        <div class="slot-item">ВАУЧЕР НА 5.000₽</div>
+        <div class="slot-item">БОНУСНАЯ ИГРА</div>
+        <div class="slot-item">25 FREE SPINS</div>
+        <div class="slot-item">БОНУС ЗА 10.000₽</div>
+        <div class="slot-item">+500% К ДЕПОЗИТУ</div>
+        <div class="slot-item">МУЛЬТИСПИН</div>
+        <div class="slot-item">ВИП-ДОСТУП</div>
+        <div class="slot-item">+200% К ДЕПОЗИТУ</div>
+        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
+        <div class="slot-item">+250% К ДЕПОЗИТУ</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">+350% К ДЕПОЗИТУ</div>
+        <div class="slot-item">СКРЫТЫЙ ПОДАРОК</div>
+        <div class="slot-item">СПЕЦИАЛЬНЫЙ КОД</div>
+        <div class="slot-item">МЕГА ВРАЩЕНИЕ</div>
+        <div class="slot-item">ВАУЧЕР НА 15.000₽</div>
+        <div class="slot-item">БОНУС ЗА 20.000₽</div>
+        <div class="slot-item">+100% К ДЕПОЗИТУ</div>
+        <div class="slot-item">ШАНС Х2</div>
+        <div class="slot-item">+400% К ДЕПОЗИТУ</div>
+        <div class="slot-item">СПЕЦПРЕДЛОЖЕНИЕ</div>
+
+        <!-- Заканчиваем победными -->
+        <div class="slot-item">+220% К ДЕПОЗИТУ</div>
+        <div class="slot-item">ШАНС Х3</div>
       </div>
     </div>
   </div>
@@ -209,14 +173,18 @@
     spinBtn.onclick = () => {
       if (parseInt(attemptsEl.innerText) <= 0) return;
       spinBtn.disabled = true;
+
+      // 10-секундная прокрутка до победных слотов
       reel.style.transition = "transform 10s cubic-bezier(0.15, 0.8, 0.3, 1)";
-      reel.style.transform = "translateY(-3750px)"; // 75 слотов * 50px
+      reel.style.transform = "translateY(-2550px)";
+
       setTimeout(() => {
         confetti();
         promo.style.display = "block";
         claimBtn.style.display = "inline-block";
         spinBtn.style.display = "none";
       }, 10000);
+
       attemptsEl.innerText = "0";
     };
   </script>
