@@ -111,33 +111,26 @@
     <div class="pointer-arrow second"></div>
     <div class="slot-container">
       <div class="reel" id="reel">
-        <!-- Победные -->
         <div class="slot-item">+220% К ДЕПОЗИТУ</div>
         <div class="slot-item">ШАНС Х3</div>
-
-        <!-- Фейковые (повторяемость) -->
         <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
-        <div class="slot-item">50 FP</div>
-        <div class="slot-item">БОНУС ЗА 15.000₽</div>
-        <div class="slot-item">25 FP</div>
-        <div class="slot-item">ВАУЧЕР НА 5.000₽</div>
         <div class="slot-item">БОНУС ЗА 20.000₽</div>
-        <div class="slot-item">500 FP</div>
-        <div class="slot-item">ВАУЧЕР НА 30.000₽</div>
-        <div class="slot-item">БОНУС ЗА 10.000₽</div>
         <div class="slot-item">25 FP</div>
-        <div class="slot-item">ВАУЧЕР НА 15.000₽</div>
-        <div class="slot-item">БОНУС ЗА 5.000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 20.000₽</div>
-        <div class="slot-item">50 FP</div>
         <div class="slot-item">ВАУЧЕР НА 5.000₽</div>
-        <div class="slot-item">БОНУС ЗА 30.000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
-        <div class="slot-item">25 FP</div>
+        <div class="slot-item">50 FP</div>
         <div class="slot-item">БОНУС ЗА 15.000₽</div>
+        <div class="slot-item">ВАУЧЕР НА 30.000₽</div>
         <div class="slot-item">ШАНС Х2</div>
         <div class="slot-item">БОНУС ЗА 10.000₽</div>
         <div class="slot-item">ВАУЧЕР НА 20.000₽</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">ВАУЧЕР НА 15.000₽</div>
+        <div class="slot-item">БОНУС ЗА 25.000₽</div>
+        <div class="slot-item">ВАУЧЕР НА 5.000₽</div>
+        <div class="slot-item">50 FP</div>
+        <div class="slot-item">БОНУС ЗА 30.000₽</div>
+        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
+        <div class="slot-item">25 FP</div>
       </div>
     </div>
   </div>
@@ -163,7 +156,7 @@
       const slotHeight = 50;
       const spins = 10;
       const totalItems = reel.children.length;
-      const targetIndex = 1; // 2-й слот = "ШАНС Х3"
+      const targetIndex = 1;
 
       const finalOffset = (spins * totalItems + targetIndex - 1) * slotHeight;
 
