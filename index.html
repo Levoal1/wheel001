@@ -49,13 +49,8 @@
       z-index: 1000;
     }
 
-    .pointer-arrow.top {
-      top: 15px; /* указывает на первый слот */
-    }
-
-    .pointer-arrow.middle {
-      top: 65px; /* указывает на второй слот */
-    }
+    .pointer-arrow.top { top: 15px; }
+    .pointer-arrow.middle { top: 65px; }
 
     .slot-container {
       position: relative;
@@ -116,37 +111,35 @@
     <div class="pointer-arrow middle"></div>
     <div class="slot-container">
       <div class="reel" id="reel">
-        <!-- 28 обычных -->
-        <div class="slot-item">500 FP</div><div class="slot-item">БОНУС ЗА 10.000₽</div>
-        <div class="slot-item">50 FP</div><div class="slot-item">+500% К ДЕПОЗИТУ</div>
-        <div class="slot-item">ВАУЧЕР</div><div class="slot-item">25 FP</div>
-        <div class="slot-item">БОНУСКА ЗА 30.000₽</div><div class="slot-item">+100% К ДЕПОЗИТУ</div>
-        <div class="slot-item">ШАНС Х2</div><div class="slot-item">500 FP</div>
-        <div class="slot-item">БОНУС ЗА 10.000₽</div><div class="slot-item">25 FP</div>
-        <div class="slot-item">+200% К ДЕПОЗИТУ</div><div class="slot-item">ВАУЧЕР</div>
-        <div class="slot-item">+150% К ДЕПОЗИТУ</div><div class="slot-item">500 FP</div>
-        <div class="slot-item">+300% К ДЕПОЗИТУ</div><div class="slot-item">БОНУСКА ЗА 30.000₽</div>
-        <div class="slot-item">25 FP</div><div class="slot-item">+500% К ДЕПОЗИТУ</div>
-        <div class="slot-item">ШАНС Х2</div><div class="slot-item">50 FP</div>
-        <div class="slot-item">25 FP</div><div class="slot-item">БОНУС ЗА 10.000₽</div>
-        <div class="slot-item">ВАУЧЕР</div><div class="slot-item">+220% К ДЕПОЗИТУ</div>
-        <div class="slot-item">+100% К ДЕПОЗИТУ</div><div class="slot-item">500 FP</div>
-
-        <!-- ПОБЕДНЫЕ -->
-        <div class="slot-item">+220% К ДЕПОЗИТУ</div> <!-- слот 29 -->
-        <div class="slot-item">ШАНС Х3</div>          <!-- слот 30 -->
-
-        <!-- После победных — 10 любых -->
-        <div class="slot-item">БОНУС ЗА 10.000₽</div>
+        <!-- Фейковые -->
         <div class="slot-item">ВАУЧЕР</div>
-        <div class="slot-item">+300% К ДЕПОЗИТУ</div>
         <div class="slot-item">500 FP</div>
-        <div class="slot-item">25 FP</div>
+        <div class="slot-item">БОНУС 10.000₽</div>
+        <div class="slot-item">+100% К ДЕПОЗИТУ</div>
+        <div class="slot-item">+300% К ДЕПОЗИТУ</div>
         <div class="slot-item">ШАНС Х2</div>
-        <div class="slot-item">+500% К ДЕПОЗИТУ</div>
-        <div class="slot-item">50 FP</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">ВАУЧЕР</div>
         <div class="slot-item">БОНУСКА ЗА 30.000₽</div>
         <div class="slot-item">+150% К ДЕПОЗИТУ</div>
+        <div class="slot-item">БОНУС 10.000₽</div>
+        <div class="slot-item">+300% К ДЕПОЗИТУ</div>
+        <div class="slot-item">+100% К ДЕПОЗИТУ</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">ВАУЧЕР</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">БОНУС 10.000₽</div>
+        <div class="slot-item">+150% К ДЕПОЗИТУ</div>
+
+        <!-- ГАРАНТИРОВАННЫЕ ПОБЕДНЫЕ -->
+        <div class="slot-item">+220% К ДЕПОЗИТУ</div> <!-- попадёт в первый слот -->
+        <div class="slot-item">ШАНС Х3</div>            <!-- попадёт во второй -->
+
+        <!-- После — ещё фейковые -->
+        <div class="slot-item">БОНУС 5.000₽</div>
+        <div class="slot-item">БОНУСКА</div>
+        <div class="slot-item">+50% К ДЕПОЗИТУ</div>
+        <div class="slot-item">500 FP</div>
       </div>
     </div>
   </div>
@@ -167,10 +160,12 @@
 
     spinBtn.onclick = () => {
       if (parseInt(attemptsEl.innerText) <= 0) return;
+
       spinBtn.disabled = true;
-      const totalItems = 31; // до победного второго слота
+
       const itemHeight = 50;
-      const offset = totalItems * itemHeight;
+      const finalIndex = reel.children.length - 3; // -3 потому что хотим 2-й с конца был в центре
+      const offset = finalIndex * itemHeight;
 
       reel.style.transition = "transform 10s cubic-bezier(0.15, 0.8, 0.3, 1)";
       reel.style.transform = `translateY(-${offset}px)`;
@@ -181,6 +176,7 @@
         claimBtn.style.display = "inline-block";
         spinBtn.style.display = "none";
       }, 10000);
+
       attemptsEl.innerText = "0";
     };
   </script>
