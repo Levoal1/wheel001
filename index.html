@@ -6,7 +6,6 @@
   <title>Мега Бонуска</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -15,7 +14,6 @@
       background: #000;
       color: #fff;
       text-align: center;
-      transition: background 1s ease;
     }
 
     h1 {
@@ -51,8 +49,8 @@
       z-index: 1000;
     }
 
-    .pointer-top { top: 15px; }
-    .pointer-middle { top: 65px; }
+    .arrow-top { top: 15px; }
+    .arrow-mid { top: 65px; }
 
     .slot-container {
       position: relative;
@@ -93,16 +91,6 @@
     #claimBtn {
       background: green;
       display: none;
-      animation: glow 1.5s infinite;
-    }
-
-    @keyframes glow {
-      0%, 100% {
-        box-shadow: 0 0 10px lime, 0 0 20px green;
-      }
-      50% {
-        box-shadow: 0 0 20px lime, 0 0 40px green;
-      }
     }
 
     #promo {
@@ -112,46 +100,46 @@
       display: none;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
   <h1>МЕГА БОНУСКА</h1>
   <div id="chances">У вас попыток: <span id="attempts">1</span></div>
 
   <div class="wrapper">
-    <div class="pointer-arrow pointer-top"></div>
-    <div class="pointer-arrow pointer-middle"></div>
+    <div class="pointer-arrow arrow-top"></div>
+    <div class="pointer-arrow arrow-mid"></div>
     <div class="slot-container">
       <div class="reel" id="reel">
-        <!-- Фиксированные победные слоты -->
-        <div class="slot-item">+220% К ДЕПОЗИТУ</div>
-        <div class="slot-item">ШАНС Х3</div>
-
-        <!-- Рандомные фейковые слоты -->
-        <div class="slot-item">500 FP</div>
-        <div class="slot-item">БОНУСКА ЗА 15.000₽</div>
+        <!-- Призовая последовательность -->
+        <div class="slot-item">БОНУС ЗА 10.000₽</div>
         <div class="slot-item">25 FP</div>
-        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
-        <div class="slot-item">БОНУСКА ЗА 5.000₽</div>
-        <div class="slot-item">50 FP</div>
-        <div class="slot-item">ВАУЧЕР НА 15.000₽</div>
-        <div class="slot-item">25 FP</div>
-        <div class="slot-item">ВАУЧЕР НА 20.000₽</div>
-        <div class="slot-item">+500% К ДЕПОЗИТУ</div>
         <div class="slot-item">ВАУЧЕР НА 5.000₽</div>
         <div class="slot-item">50 FP</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">БОНУС ЗА 20.000₽</div>
+        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
+        <div class="slot-item">БОНУС ЗА 15.000₽</div>
         <div class="slot-item">25 FP</div>
-        <div class="slot-item">+100% К ДЕПОЗИТУ</div>
+        <div class="slot-item">500 FP</div>
         <div class="slot-item">ВАУЧЕР НА 30.000₽</div>
-        <div class="slot-item">+150% К ДЕПОЗИТУ</div>
-        <div class="slot-item">БОНУСКА ЗА 10.000₽</div>
-        <div class="slot-item">+300% К ДЕПОЗИТУ</div>
+        <div class="slot-item">БОНУС ЗА 5.000₽</div>
+        <div class="slot-item">50 FP</div>
+        <div class="slot-item">ВАУЧЕР НА 15.000₽</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">БОНУС ЗА 10.000₽</div>
+
+        <!-- Победные слоты -->
+        <div class="slot-item">+220% К ДЕПОЗИТУ</div> <!-- под верхнюю стрелку -->
+        <div class="slot-item">ШАНС Х3</div>           <!-- под центральную стрелку -->
+        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
       </div>
     </div>
   </div>
 
   <button id="spinBtn">КРУТИТЬ</button>
   <button id="claimBtn" onclick="window.location.href='https://lkhq.cc/24e8'">ЗАБРАТЬ БОНУС</button>
-  <div id="promo">Сделайте депозит на 1WIN от 3,500₽ и получите Шанс х3 и +220% к любому депозиту!</div>
+  <div id="promo">Сделайте депозит на 1win от 3,500₽ и получите Шанс х3 и +220% к любому депозиту!</div>
 
   <script>
     Telegram.WebApp.ready();
@@ -165,30 +153,27 @@
 
     spinBtn.onclick = () => {
       if (parseInt(attemptsEl.innerText) <= 0) return;
-
       spinBtn.disabled = true;
 
-      // Общее смещение — выбираем так, чтобы нужные слоты попали точно в центр
-      const totalSlots = document.querySelectorAll('.slot-item').length;
       const slotHeight = 50;
-      const targetIndex = 0; // первый слот (+220%) на верхней позиции
-      const offset = targetIndex * slotHeight;
+      const totalSlots = document.querySelectorAll('.slot-item').length;
+      const visibleSlots = 3;
+      const targetIndex = totalSlots - visibleSlots;
+      const targetOffset = targetIndex * slotHeight;
 
-      reel.style.transition = "transform 10s cubic-bezier(0.15, 0.8, 0.3, 1)";
-      reel.style.transform = `translateY(-${offset}px)`;
+      reel.style.transition = "transform 15s cubic-bezier(0.15, 0.8, 0.3, 1)";
+      reel.style.transform = `translateY(-${targetOffset}px)`;
 
       setTimeout(() => {
-        // Эффекты победы
-        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-        document.body.style.background = "#111 radial-gradient(circle, gold 1%, black 70%)";
-
-        // Вибрация (если поддерживается)
-        Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-
+        confetti({
+          particleCount: 300,
+          spread: 90,
+          origin: { y: 0.6 }
+        });
         promo.style.display = "block";
         claimBtn.style.display = "inline-block";
         spinBtn.style.display = "none";
-      }, 10000);
+      }, 15000);
 
       attemptsEl.innerText = "0";
     };
