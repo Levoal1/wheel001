@@ -111,26 +111,28 @@
     <div class="pointer-arrow arrow-mid"></div>
     <div class="slot-container">
       <div class="reel" id="reel">
-        <div class="slot-item">25 FP</div>
+        <!-- Призовая последовательность должна быть строго на последних 3 слотах -->
         <div class="slot-item">БОНУС ЗА 10.000₽</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">ВАУЧЕР НА 5.000₽</div>
+        <div class="slot-item">50 FP</div>
         <div class="slot-item">500 FP</div>
+        <div class="slot-item">БОНУС ЗА 20.000₽</div>
+        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
+        <div class="slot-item">БОНУС ЗА 15.000₽</div>
+        <div class="slot-item">25 FP</div>
+        <div class="slot-item">500 FP</div>
+        <div class="slot-item">ВАУЧЕР НА 30.000₽</div>
         <div class="slot-item">БОНУС ЗА 5.000₽</div>
         <div class="slot-item">50 FP</div>
-        <div class="slot-item">25 FP</div>
-        <div class="slot-item">БОНУС ЗА 20.000₽</div>
-        <div class="slot-item">ВАУЧЕР НА 5.000₽</div>
-        <div class="slot-item">БОНУС ЗА 15.000₽</div>
-        <div class="slot-item">500 FP</div>
-        <div class="slot-item">БОНУС ЗА 30.000₽</div>
-        <div class="slot-item">25 FP</div>
-        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
+        <div class="slot-item">ВАУЧЕР НА 15.000₽</div>
         <div class="slot-item">500 FP</div>
         <div class="slot-item">БОНУС ЗА 10.000₽</div>
 
         <!-- Победные слоты -->
-        <div class="slot-item">+220% К ДЕПОЗИТУ</div>
-        <div class="slot-item">ШАНС Х3</div>
-        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>
+        <div class="slot-item">+220% К ДЕПОЗИТУ</div> <!-- под верхнюю стрелку -->
+        <div class="slot-item">ШАНС Х3</div>            <!-- под центральную стрелку -->
+        <div class="slot-item">ВАУЧЕР НА 10.000₽</div>  <!-- дополнительный слот снизу -->
       </div>
     </div>
   </div>
@@ -153,13 +155,13 @@
       if (parseInt(attemptsEl.innerText) <= 0) return;
       spinBtn.disabled = true;
 
-      const allItems = document.querySelectorAll('.slot-item');
       const slotHeight = 50;
+      const totalSlots = document.querySelectorAll('.slot-item').length;
       const visibleSlots = 3;
-      const targetIndex = allItems.length - visibleSlots;
+      const targetIndex = totalSlots - visibleSlots;
       const targetOffset = targetIndex * slotHeight;
 
-      reel.style.transition = "transform 10s cubic-bezier(0.15, 0.8, 0.3, 1)";
+      reel.style.transition = "transform 15s cubic-bezier(0.15, 0.8, 0.3, 1)";
       reel.style.transform = `translateY(-${targetOffset}px)`;
 
       setTimeout(() => {
@@ -167,7 +169,7 @@
         promo.style.display = "block";
         claimBtn.style.display = "inline-block";
         spinBtn.style.display = "none";
-      }, 10000);
+      }, 15000);
 
       attemptsEl.innerText = "0";
     };
